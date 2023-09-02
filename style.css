@@ -4,6 +4,7 @@ body {
     font-family: font;
     font-size: 2vh;
     color: rgb(22, 22, 0);
+    background-color: #120533;
 }
 
 h1 {
@@ -21,6 +22,7 @@ img {
 
 :root {
     --divider-height: 30px;
+    --nav-height: 100px;
 }
 
 a {
@@ -31,6 +33,11 @@ a {
 /* ------------------- Classes ------------------- */
 
 /* General */
+
+.anchor {
+    position: relative;
+    top: calc(var(--nav-height) * -1);
+}
 
 .titleBar {
     height: 200px;
@@ -52,10 +59,11 @@ a {
     position: sticky;
     top: 0px;
     width: 100%;
-    height: 100px;
+    height: var(--nav-height);
     padding: 0;
+    z-index: 10;
 
-    background-color: khaki;
+    /* background-color: rgb(252, 233, 66); */
 
     display: flex;
     justify-content: center;
@@ -63,45 +71,62 @@ a {
 }
 
 .navbarElement {
-    flex-grow: 1;
-    border: 1px solid black;
+    width: 25%;
+
+    background: linear-gradient(155deg, rgb(252, 233, 66) 20%, rgb(253, 243, 147) 40% , rgb(247, 174, 19));
+    border: 5px rgb(19, 8, 3) inset;
+    border-radius: 5px;
     
     display: flex;
     justify-content: center;
     align-items: center;
 
     font-size: 40px;
+
+    transition: 0.2s ease-in-out;
 }
 
-.overviewContainer {
+.navbarElement:hover {
+    background: linear-gradient(155deg, rgb(255, 239, 98) 20%, rgb(255, 246, 169) 40% , rgb(250, 188, 54));
+    border: 5px rgb(48, 21, 8) inset;
+}
+
+.overviewContainer, .characterDescContainer {
     height: 400px;
     padding: 3vh 10vw;
 
+    /* border: 5px rgb(70, 14, 0) double; */
 
-    border: 5px rgb(70, 14, 0) double;
-
-    background-color: #9198e5;
+    background-color: #6d77e0;
 }
 
-.overviewText {
+.overviewText, .characterDescText, .weaponsText {
     font-size: 6vh;
 }
 
-.titleLine {
-    width: 90%;
+.titleLine, titleLineRight {
+    width: 100%;
     height: 2px;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, blue, rgba(0, 0, 0, 0));
+    background: linear-gradient(90deg, rgb(184, 133, 25), rgba(0, 0, 0, 0) 50%);
+}
+
+.titleLineRight {
+    width: 100%;
+    height: 2px;
+    margin-bottom: 10px;
+    float: right;
+    background: linear-gradient(270deg, rgb(255, 91, 91) 20%, rgba(0, 0, 0, 0) 50%);
 }
 
 .gameplayContainer {
     height: 400px;
     padding: 3vh 10vw;
+    color: rgb(253, 255, 138);
 
-
-    border: 5px rgb(70, 14, 0) double;
-
-    background-color: #9198e5;
+    /* border: 5px rgb(70, 14, 0) double; */
+    background: linear-gradient(180deg, #120533 90%, #6d77e0 100%);
+    background-color: #120533;
 }
 
 .gameplayText {
@@ -110,13 +135,17 @@ a {
 
 /* Character */
 
+.characterDescContainer {
+    text-align: right;
+}
+
 .characterContainer {
     position: relative;
     width: auto;
     height: 30vh;
-    padding: 20px;
+    padding-bottom: 10vh;
 
-    background-image: url("../Website/Assets/Images/BrickWallBackground.png");
+    background-image: url("Assets/Images/BrickWallBackground.png");
     background-size: contain;
     /* background-color: lightslategrey; */
     
@@ -195,7 +224,7 @@ a {
     height: 7vw;
     border: 2px rgb(8, 20, 5) solid;
 
-    background-image: url("../Website/Assets/Images/GoldenFrameWOuter.png");
+    background-image: url("Assets/Images/GoldenFrameWOuter.png");
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -240,7 +269,7 @@ a {
     width: 100%;
     z-index: 5;
 
-    background-image: url("../Website/Assets/Images/divider.png");
+    background-image: url("Assets/Images/divider.png");
     background-size: contain;
     
 }
@@ -259,7 +288,6 @@ a {
 
 
 
-
 /* ------------------ Animations ------------------ */
 
 @keyframes characterAnimation {
@@ -274,7 +302,7 @@ a {
 }
 
 @keyframes weaponFrameHover {
-    100% { background-image: url("../Website/Assets/Images/GoldenFrameWOuterHover.png"); }
+    100% { background-image: url("Assets/Images/GoldenFrameWOuterHover.png"); }
 }
 
 

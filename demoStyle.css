@@ -22,6 +22,7 @@
     left: 100px;
     width: var(--demo-player-width);
     height: var(--demo-player-height);
+    z-index: 0;
     
 
     /* background-color: bisque; */
