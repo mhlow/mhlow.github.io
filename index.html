@@ -7,12 +7,12 @@
     <title>Dungeon Crashers</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="demoStyle.css">
-    <link rel="icon" href="../Website/Assets/Images/Mage_Weapon_Icon.png">
+    <link rel="icon" href="Assets/Images/Mage_Weapon_Icon.png">
   </head>
 
   <body>
     <div class="titleBar">
-      <span class="titleText">DUNGEON DOMERS</span>
+      <span class="titleText">DUNGEON CRASHERS</span>
     </div>
 
     <nav class="navbar">
@@ -24,105 +24,214 @@
 
     <div class="anchor" id="overviewAnchor"></div>
     <div class="overviewContainer">
+      <div class="titleLine" style="width: 22%; height: 2px; margin-bottom: 10px; background: linear-gradient(90deg, rgb(255, 91, 91), rgb(228, 224, 31));"></div>
       <span class="overviewText">OVERVIEW<br></span>
-      <div class="titleLine"></div>
-      <span>Hi guys alia here back with another fortnite video. <br>
-        A competitive 2d pixelated dungeon crawler RPG with the aim to outlast or beat your opponents in whatever ways you can find. At your disposal is an arsenal of weapons for your class to help you adventure through the caverns and find powerful items to give yourself an advantage. The items can directly interfere with your challengers, but beware, you may find yourself to be the target of such attacks! <br><br>
+      <div class="overviewInner">
+        <span>
+          A casual multiplayer 2D pixelated dungeon crawler RPG mobile party game with the aim to outlast your opponent/s, or make it to the third floor of the dungeon and beat the final boss before anyone else. Throughout the dungeon you will find items and artifacts for your character to help you adventure through the caverns and hinder your enemies as they attempt to beat the dungeon before you. 
+          <br><br>
+          With party game aspects, you will be able to see other players' screens alongside your own, allowing you to strategically play around your opponents, and strike them with items and abilities at the most opportune times. The standard game will be formatted as a 1v1 with each player playing on their own device, but different game modes will allow players to explore unique and fun ways to play the game, such as a battle royale with many players. 
+  
+        </span>
 
-        With party game like aspects to the game, you will be able to see other players' screens alongside your own, allowing you to strategically play around your opponents. Different game modes will be available such as 1 on 1 or a battle royale with many players. <br><br>
+        <span>
+          The aim of this game is to supply a group of friends with a fun party game that won't leave anyone out, and allow everyone in the group to play. With many game modes allowing as many players as you want, nobody will be left out when a group of friends want to play. Whether you have just 2 or even 20 people, there will always be a game mode available to allow everyone to play at once whilst on the go. 
+  
+        </span>
 
-        Our marshmallows are in danger!!<br><br>
-
-        Something about making a mobile multiplayer thing
-      </span>
-    </div>
-
-    <div class="demoContainer">
-      <div class="demoPlayer"></div>
-    </div>
-    
-    <div class="anchor" id="gameplayAnchor"></div>
-    <div class="gameplayContainer">
+      </div>
       
-      <span class="gameplayText">GAMEPLAY<br></span>
-      <div class="titleLine"></div>
-      <span>In a 1v1 format, each player will have access to both theirs and their opponents screen. <br><br>
-        Go clear some rooms and get powerups to hinder your opponent or Something
-        reach the end goal before your opponent!<br><br>
-
-        Enviroment will be a series of rooms inside of a dungeon connected with hallways, each room will close off behind you making you face whatever lies inside
-        
-      </span>
-
     </div>
+
     
-    <div class="anchor" id="characterAnchor"></div>
-    <div class="characterDescContainer">
-      <span class="characterDescText">CHARACTERS<br></span>
-      <div class="titleLineRight"></div>
-      <span>Wow there are characters that people can pick with different abilities!!! <br><br>
-        more text LMFAOOO iuweoiunusoinrcukslynkcysweanyl lnalek nfali nfula lny fclunew ufyealy in flsiue ngeiusng se jknfsh
-        
-      </span>
-
-    </div>
-
-    <div class="characterContainer">
+    
+    
+    
+    <div class="characterOuter">
       <div class="divider"></div>
-      <div class="characterImgContainer" id="archerImgContainer">
-          <img src="Assets/Images/Archer.png" alt="Sprite of Archer" class="characterImg" id="archerImg"/>
+      <div class="anchor" id="characterAnchor"></div>
+      <div class="characterDescContainer">
+        <div class="titleLineRight" style="width: 100%; height: 2px; margin-bottom: 10px; float:right; background: linear-gradient(90deg, rgba(0,0,0,0)68%, rgb(228, 224, 31) 68%, rgb(255, 91, 91));"></div>
+        <span class="characterDescText">CHARACTERS<br></span>
+        
+        <span>There are 4 playable characters in the game, including the Ranger, Dark Knight, Mage, and Rogue. <br><br>
+          Each character has a skill and an ultimate that give each character their own unique playstyle. The skill has a set cooldown, whereas the ultimate requires players to defeat enemies to charge up.
+
+          
+        </span>
+
       </div>
 
-      <div class="characterImgContainer" id="bruteImgContainer">
-          <img src="Assets/Images/Brute.png" alt="Sprite of Brute" class="characterImg" id="bruteImg"/>
-      </div>
+      <div class="characterContainer">
+        <div class="holder">
+          <div class="characterImgContainer" id="archerImgContainer" onmouseover="openPage('archer')" onmouseleave="closePage('archer')">
+              <img src="Assets/Images/ArcherCropped.png" alt="Sprite of Archer" class="characterImg" id="archerImg"/>
+          </div>
+          <div class="archerPage" onmouseover="openPage('archer')" onmouseleave="closePage('archer')">
+            <h1 style="font-size: 24px;">Ranger</h1>
+            <div class="skillContainer">
+              <div class="skillImg"><img src="Assets/Images/ArcherSkill.png" alt="Archer Skill Icon" id="archerSkillImg"/></div>
 
-      <div class="characterImgContainer" id="mageImgContainer">
-          <img src="Assets/Images/Mage.png" alt="Sprite of Mage" class="characterImg" id="mageImg"/>
-      </div>
+              <div class="skillText">
+                Skill<br>
+                <span style="color: rgb(231, 178, 43);">Focus Fire:</span> 
+                Enchant your bow to deal bonus damage for a short time.
+              </div>
+            </div>
 
-      <div class="characterImgContainer" id="rogueImgContainer">
-          <img src="Assets/Images/Rogue.png" alt="Sprite of Rogue" class="characterImg" id="rogueImg"/>
+            <div class="ultContainer">
+              <div class="ultImg"><img src="Assets/Images/ArcherUlt.png" alt="Archer Ult Icon" id="archerUltImg"/></div>
+
+              <div class="ultText">
+                Ultimate<br>
+                <span style="color: rgb(231, 178, 43);">Arrow Rain:</span>
+                Fire a barrage of arrows in a specified area, dealing large amounts of damage to enemies caught within.
+              </div>
+            </div>
+          </div>
+
+          <div class="characterImgContainer" id="bruteImgContainer" onmouseover="openPage('brute')" onmouseleave="closePage('brute')">
+              <img src="Assets/Images/BruteCropped.png" alt="Sprite of Brute" class="characterImg" id="bruteImg"/>
+          </div>
+          <div class="brutePage" onmouseover="openPage('brute')" onmouseleave="closePage('brute')">
+            <h1 style="font-size: 24px;">Necrobrawler</h1>
+            <div class="skillContainer">
+              <div class="skillImg"><img src="Assets/Images/BruteSkill.png" alt="Brute Skill Icon" id="bruteSkillImg"/></div>
+
+              <div class="skillText">
+                Skill<br>
+                <span style="color: rgb(231, 178, 43);">Skull Smash:</span> 
+                Smash the ground with your club, dealing damage and slowing all enemies near you.
+              </div>
+            </div>
+
+            <div class="ultContainer">
+              <div class="ultImg"><img src="Assets/Images/BruteUlt.png" alt="Brute Ult Icon" id="bruteUltImg"/></div>
+
+              <div class="ultText">
+                Ultimate<br>
+                <span style="color: rgb(231, 178, 43);">Skeleton Wrath:</span>
+                Summon a skeleton in all opponents' dungeons with stats proportional to the amount of enemies defeated since your last ultimate.
+              </div>
+            </div>
+          
+          </div>
+
+          <div class="characterImgContainer" id="mageImgContainer" onmouseover="openPage('mage')" onmouseleave="closePage('mage')">
+              <img src="Assets/Images/MageCropped.png" alt="Sprite of Mage" class="characterImg" id="mageImg"/>
+          </div>
+          <div class="magePage" onmouseover="openPage('mage')" onmouseleave="closePage('mage')">
+            <h1 style="font-size: 24px;">Mage</h1>
+            <div class="skillContainer">
+              <div class="skillImg"><img src="Assets/Images/MageSkill.png" alt="Mage Skill Icon" id="mageSkillImg"/></div>
+
+              <div class="skillText">
+                Skill<br>
+                <span style="color: rgb(231, 178, 43);">Elemental Shield:</span> 
+                Create a bubble around your character that absorbs damage for a short period.
+              </div>
+            </div>
+
+            <div class="ultContainer">
+              <div class="ultImg"><img src="Assets/Images/MageUlt.png" alt="Mage Ult Icon" id="mageUltImg"/></div>
+
+              <div class="ultText">
+                Ultimate<br>
+                <span style="color: rgb(231, 178, 43);">Stormy Weather:</span>
+                Manifest a thundercloud above your head that follows you. Enemies that draw near are stunned and damaged by lightning.
+              </div>
+            </div>
+          </div>
+
+          <div class="characterImgContainer" id="rogueImgContainer" onmouseover="openPage('rogue')" onmouseleave="closePage('rogue')">
+              <img src="Assets/Images/RogueCropped.png" alt="Sprite of Rogue" class="characterImg" id="rogueImg"/>
+          </div>
+          <div class="roguePage" onmouseover="openPage('rogue')" onmouseleave="closePage('rogue')">
+            <h1 style="font-size: 24px;">Rogue</h1>
+            <div class="skillContainer">
+              <div class="skillImg"><img src="Assets/Images/RogueSkill.png" alt="Rogue Skill Icon" id="rogueSkillImg"/></div>
+
+              <div class="skillText">
+                Skill<br>
+                <span style="color: rgb(231, 178, 43);">Sweeping Dash:</span> 
+                Dash a short distance, dealing damage to any enemies in your path. For each enemy hit, gain a temporary speed increase.
+              </div>
+            </div>
+
+            <div class="ultContainer">
+              <div class="ultImg"><img src="Assets/Images/RogueUlt.png" alt="Rogue Ult Icon" id="rogueUltImg"/></div>
+
+              <div class="ultText">
+                Ultimate<br>
+                <span style="color: rgb(231, 178, 43);">The Perfect Crime:</span>
+                Steal a random artifact from an enemy and use it immediately. Then, reset all cooldowns.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
     
     <div class="anchor" id="weaponsAnchor"></div>
     <div class="weaponContainer">
       <div class="divider"></div>
       <div class="weaponImgOuterBox">
         <div class="weaponImgUpper">
-          <div class="weaponImgContainer">
+          <div class="weaponImgContainer aWeaponCont">
             <img src="Assets/Images/Archer_Weapon.png" alt="Archer Weapon" class="weaponImg"/>
           </div>
 
-          <div class="weaponImgContainer">
+          <div class="weaponImgContainer bWeaponCont">
             <img src="Assets/Images/Brute_Weapon.png" alt="Brute Weapon" class="weaponImg"/>
           </div>
         </div>
 
         <div class="weaponImgLower">
-          <div class="weaponImgContainer">
+          <div class="weaponImgContainer mWeaponCont">
             <img src="Assets/Images/Mage_Weapon.png" alt="Mage Weapon" class="weaponImg"/>
           </div>
 
-          <div class="weaponImgContainer">
+          <div class="weaponImgContainer rWeaponCont">
             <img src="Assets/Images/Rogue_Weapon.png" alt="Rogue Weapon" class="weaponImg"/>
           </div>
         </div>
       </div>
 
       <div class="weaponDesc">
-        <span class="weaponsText">WEAPONS<br></span>
-        <div class="titleLine" style="width: 100%; height: 2px; margin-bottom: 10px; background: linear-gradient(90deg, rgb(255, 140, 0) 20%, rgba(0, 0, 0, 0) 50%);"></div>
-        <div class="weaponDescText">
-          Lorem ipsum 
+        <div class="titleLine" style="width: 60%; height: 2px; margin-bottom: 10px; background: linear-gradient(90deg, rgb(255, 91, 91), rgb(228, 224, 31));"></div>
+        <div class="weaponsText"></div>
+        
+        <div class="weaponsDescText">
         </div>
       </div>
 
 
     </div>
 
+    <div class="anchor" id="gameplayAnchor"></div>
+    <div class="divider"></div>
+    <div class="gameplayContainer">
+      
+      <div class="titleLine" style="width: 22%; height: 2px; margin-bottom: 10px; background: linear-gradient(90deg, rgb(255, 91, 91), rgb(228, 224, 31));"></div>
+      <span class="gameplayText">GAMEPLAY<br></span>
+      
+      <span>
+        Each player will be able to access their opponents' screens as well as their own.
+        <br><br>
+        The dungeon will be a series of rooms connected with maze-like hallways, and each room will close off behind you making you face whatever lies inside, good or bad. You may find powerful artifacts and items, or you may be ambushed by a horde of powerful enemies to fight off. 
+        <br><br>
+        Artifacts are powerful and reusable tools that could deal damage to opponents or enemies, or give buffs to your own character.
+        <br><br>
+        Items are consumables such as health potions to be quickly used in dangerous situations.
+      </span>
+
+    </div>
+
+    <div class="demoContainer">
+      <div class="divider"></div>
+      <div class="demoPlayer1"></div>
+      <div class="demoPlayer2"></div>
+    </div>
 
 
 

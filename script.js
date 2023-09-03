@@ -1,22 +1,48 @@
-const playerImg = document.querySelector(".demoPlayer");
+const playerImg1 = document.querySelector(".demoPlayer1");
+const playerImg2 = document.querySelector(".demoPlayer2");
+
+const archerImg = document.querySelector("#archerImgContainer");
+const bruteImg = document.querySelector("#bruteImgContainer");
+const mageImg = document.querySelector("#mageImgContainer");
+const rogueImg = document.querySelector("#rogueImgContainer");
+
+const archerPage = document.querySelector(".archerPage");
+const brutePage = document.querySelector(".brutePage");
+const magePage = document.querySelector(".magePage");
+const roguePage = document.querySelector(".roguePage");
 
 const playerWidth = 1.8 * 29;
 const MOVEMENT_SPEED = 10;
-let posX = playerImg.offsetLeft;
-let posY = playerImg.offsetTop;
+let posX1 = playerImg1.offsetLeft;
+let posY1 = playerImg1.offsetTop;
+
+let posX2 = playerImg2.offsetLeft;
+let posY2 = playerImg2.offsetTop;
 
 let UPKEY = "KeyW"
 let DOWNKEY = "KeyS"
 let LEFTKEY = "KeyA"
 let RIGHTKEY = "KeyD"
+let ARROWUPKEY = "ArrowUp"
+let ARROWDOWNKEY = "ArrowDown"
+let ARROWLEFTKEY = "ArrowLeft"
+let ARROWRIGHTKEY = "ArrowRight"
 
 let UP = false;
 let DOWN = false;
 let LEFT = false;
 let RIGHT = false;
+let ARROWUP = false;
+let ARROWDOWN = false;
+let ARROWLEFT = false;
+let ARROWRIGHT = false;
+
+
 
 document.addEventListener('keydown', function(e) {   
     let keyPress = e.code;
+
+    // Player 1
     if (keyPress === UPKEY) {
         UP = true;
         console.log("Move up");
@@ -34,11 +60,30 @@ document.addEventListener('keydown', function(e) {
         console.log("Move right");
     }
 
+    // Player 2
+    if (keyPress === ARROWUPKEY) {
+        ARROWUP = true;
+        console.log("Move up");
+    }
+    if (keyPress === ARROWDOWNKEY) {
+        ARROWDOWN = true;
+        console.log("Move down");
+    }
+    if (keyPress === ARROWLEFTKEY) {
+        ARROWLEFT = true;
+        console.log("Move left");
+    }
+    if (keyPress === ARROWRIGHTKEY) {
+        ARROWRIGHT = true;
+        console.log("Move right");
+    }
 
 })
 
 document.addEventListener('keyup', function(e) {   
     let keyPress = e.code;
+
+    // Player 1
     if (keyPress === UPKEY) {
         UP = false;
     }
@@ -51,44 +96,86 @@ document.addEventListener('keyup', function(e) {
     if (keyPress === RIGHTKEY) {
         RIGHT = false;
     }
+
+    // Player 2
+    if (keyPress === ARROWUPKEY) {
+        ARROWUP = false;
+    }
+    if (keyPress === ARROWDOWNKEY) {
+        ARROWDOWN = false;
+    }
+    if (keyPress === ARROWLEFTKEY) {
+        ARROWLEFT = false;
+    }
+    if (keyPress === ARROWRIGHTKEY) {
+        ARROWRIGHT = false;
+    }
+
 })
 
 function updateDemo() {
-    posX = playerImg.offsetLeft;
-    posY = playerImg.offsetTop;
+    posX1 = playerImg1.offsetLeft;
+    posY1 = playerImg1.offsetTop;
+    posX2 = playerImg2.offsetLeft;
+    posY2 = playerImg2.offsetTop;
 
-
+    // Player 1
     if (UP) {
-        posY -= MOVEMENT_SPEED;
+        posY1 -= MOVEMENT_SPEED;
     }
     if (DOWN) {
-        posY += MOVEMENT_SPEED;
+        posY1 += MOVEMENT_SPEED;
     }
 
     if (LEFT) {
-        posX -= MOVEMENT_SPEED;
-        if (!inHorizontalBounds(posX)) {
-            posX = 0;
+        posX1 -= MOVEMENT_SPEED;
+        if (!inHorizontalBounds(posX1, 0)) {
+            posX1 = 0;
         }
 
-        playerImg.style.transform = "scaleX(1)";
+        playerImg1.style.transform = "scaleX(1)";
     }
     if (RIGHT) {
-        posX += MOVEMENT_SPEED;
-        if (!inHorizontalBounds(posX)) {
-            posX = window.innerWidth - playerWidth - 18;
+        posX1 += MOVEMENT_SPEED;
+        if (!inHorizontalBounds(posX1, 0)) {
+            posX1 = (window.innerWidth - 2 * playerWidth - 18) / 2;
         }
-        playerImg.style.transform = "scaleX(-1)";
+        playerImg1.style.transform = "scaleX(-1)";
+    }
+
+    // Player 2
+    if (ARROWUP) {
+        posY2 -= MOVEMENT_SPEED;
+    }
+    if (ARROWDOWN) {
+        posY2 += MOVEMENT_SPEED;
+    }
+
+    if (ARROWLEFT) {
+        posX2 -= MOVEMENT_SPEED;
+        if (!inHorizontalBounds(posX2, (window.innerWidth - 18) / 2)) {
+            posX2 = (window.innerWidth - 18) / 2;
+        }
+
+        playerImg2.style.transform = "scaleX(1)";
+    }
+    if (ARROWRIGHT) {
+        posX2 += MOVEMENT_SPEED;
+        if (!inHorizontalBounds(posX2, (window.innerWidth - 18) / 2)) {
+            posX2 = window.innerWidth - playerWidth - 18;
+        }
+        playerImg2.style.transform = "scaleX(-1)";
     }
 
 
-
-    playerImg.style.top = posY + "px";
-    playerImg.style.left = posX + "px";
+    playerImg1.style.top = posY1 + "px";
+    playerImg1.style.left = posX1 + "px";
+    playerImg2.style.top = posY2 + "px";
+    playerImg2.style.left = posX2 + "px";
 }
 
-function inHorizontalBounds(playerX) {
-    if (0 <= playerX && playerX <= window.innerWidth - playerWidth - 18) {
+function inHorizontalBounds(playerX, offset) {
+    if (0 + offset <= playerX && playerX <= (window.innerWidth - 2 * playerWidth - 18) / 2 + offset) {
         return true;
     }
     return false;
@@ -98,10 +185,12 @@ bobUp = true;
 
 function characterBob() {
     if (bobUp) {
-        playerImg.style.top = playerImg.offsetTop + 2 + "px";
+        playerImg1.style.top = playerImg1.offsetTop + 2 + "px";
+        playerImg2.style.top = playerImg2.offsetTop + 2 + "px";
         bobUp = false;
     } else {
-        playerImg.style.top = playerImg.offsetTop - 2 + "px";
+        playerImg1.style.top = playerImg1.offsetTop - 2 + "px";
+        playerImg2.style.top = playerImg2.offsetTop - 2 + "px";
         bobUp = true;
     }
 }
@@ -109,13 +198,241 @@ function characterBob() {
 setInterval(updateDemo, 20);
 setInterval(characterBob, 600);
 
+const archerSkillImg = document.querySelector("#archerSkillImg");
+
+let pageWidth = "22vw";
+let pagePadding = "0 0.4vw 0 1.4vw";
+
+let aOpen = false;
+let bOpen = false;
+let mOpen = false;
+let rOpen = false;
+
+function openPage(str) {
+    if (str === "archer") {
+        aOpen = true;
+        archerPage.style.width = pageWidth;
+        archerPage.style.padding = pagePadding;
+        
+        setTimeout(() => {  
+            if (aOpen) {
+                archerPage.style.opacity = "1";
+            }
+        }, 200);
+        
+    }
+    if (str === "brute") {
+        bOpen = true;
+        brutePage.style.width = pageWidth;
+        brutePage.style.padding = pagePadding;
+
+        setTimeout(() => {  
+            if (bOpen) {
+                brutePage.style.opacity = "1";
+            }
+        }, 200);
+    }
+    if (str === "mage") {
+        mOpen = true;
+        magePage.style.width = pageWidth;
+        magePage.style.padding = pagePadding;
+
+        setTimeout(() => {  
+            if (mOpen) {
+                magePage.style.opacity = "1";
+            }
+        }, 200);
+    }
+    if (str === "rogue") {
+        rOpen = true;
+        roguePage.style.width = pageWidth;
+        roguePage.style.padding = pagePadding;
+
+        setTimeout(() => {  
+            if (rOpen) {
+                roguePage.style.opacity = "1";
+            }
+        }, 200);
+    }
+}
+
+function closePage(str) {
+    if (str === "archer") {
+        aOpen = false;
+        archerPage.style.opacity = "0";
+
+        setTimeout(() => {  
+            if (!aOpen) {
+                archerPage.style.width = "0";
+                archerPage.style.padding = "0";
+            }
+        }, 200);
+        
+    }
+    if (str === "brute") {
+        bOpen = false;
+        brutePage.style.opacity = "0";
+
+        setTimeout(() => {  
+            if (!bOpen) {
+        brutePage.style.width = "0";
+        brutePage.style.padding = "0";
+            }
+        }, 200);
+    }
+    if (str === "mage") {
+        mOpen = false;
+        magePage.style.opacity = "0";
+
+        setTimeout(() => {  
+            if (!mOpen) {
+        magePage.style.width = "0";
+        magePage.style.padding = "0";
+            }
+        }, 200);
+    }
+    if (str === "rogue") {
+        rOpen = false;
+        roguePage.style.opacity = "0";
+
+        setTimeout(() => {  
+            if (!rOpen) {
+        roguePage.style.width = "0";
+        roguePage.style.padding = "0";
+            }
+        }, 200);
+    }
+}
+
+const weaponsText = document.querySelector(".weaponsText");
+const weaponsDescText = document.querySelector(".weaponsDescText");
+
+const aWeaponCont = document.querySelector(".aWeaponCont");
+const bWeaponCont = document.querySelector(".bWeaponCont");
+const mWeaponCont = document.querySelector(".mWeaponCont");
+const rWeaponCont = document.querySelector(".rWeaponCont");
 
 
+let SPEED = 5;
+let forwards = true;
+let offset = 0;
 
-// archerImg.onclick = characterAnimation(archerImg);
+weaponTitleText = [
+    "Elden Wood Bow",
+    "Soulreaper Club",
+    "Elemental Codex",
+    "Whispering Daggers"
+]
 
-// JQUERY
+descText = [
+    ["The Ranger has an enchanted bow, allowing her to deal", "damage to enemies from afar with lethal precision."], 
+    ["The NecroKnight wields a skeleton club, able to deal", "massive amounts of damage to those who get too close,", "and it even has some magical properties allowing it to summon", "the undead into your enemies' dungeons."], 
+    ["The Mage casts powerful spells from her spellbook, which she", "uses to blast enemies at a safe distance, and to protect", "herself if those enemies manage to get too close for comfort."], 
+    ["The Rogue fights with two sharp daggers, which he slices through", "enemies with as he nimbly dashes around, making him impossible", "to track as he cuts through his foes."]
+];
 
+let desc = "";
+function textAnimation(textArr, num, textOuter) {
+    textOuter.setAttribute('style', 'white-space: pre;');
+    var longest = Math.max(...(textArr[num].map(el => el.length)));
+
+    var stopRep = setInterval(function () {
+        if (forwards) {
+            offset++;
+
+            if (offset > longest) {
+                forwards = false;
+                clearInterval(stopRep);
+                return;
+            }
+
+        } else {
+            offset--;
+
+            if (offset <= 0) {
+                if (!forwards) {
+                    forwards = true;
+                    textAnimation(textArr, num, textOuter);
+                }
+                clearInterval(stopRep);
+                
+            }
+        }
+
+        
+        if (forwards) {
+            desc = "";
+            for (let i = 0; i < textArr[num].length; i++) {
+                if (textArr[num][i].length > offset) {
+                    desc += textArr[num][i].slice(0, offset) + "\r\n";
+                } else {
+                    desc += textArr[num][i] + "\r\n";
+                }
+            }
+            // console.log(desc);
+        } else {
+            descArr = desc.split("\r\n");
+            
+            for (let i = 0; i < descArr.length - 1; i++) {
+                if (descArr[i].length) {
+                    descArr[i] = descArr[i].slice(0, -1);
+                }
+            }
+
+            desc = "";
+            for (let i = 0; i < descArr.length; i++) {
+                desc += descArr[i] + "\r\n";
+                ;
+            }
+
+            // console.log(desc);
+        }
+
+        if (forwards) {
+            weaponsText.textContent = weaponTitleText[num].slice(0, offset);
+        } else {
+            weaponsText.textContent = weaponsText.textContent.slice(0, offset);
+        }
+        
+        textOuter.textContent = desc;
+    }, SPEED);
+
+    
+    
+};
+
+function lightUp(cont) {
+    document.documentElement.style.setProperty('--border-a', "none");
+    document.documentElement.style.setProperty('--border-b', "none");
+    document.documentElement.style.setProperty('--border-m', "none");
+    document.documentElement.style.setProperty('--border-r', "none");
+
+    if (cont === "a") {
+        document.documentElement.style.setProperty('--border-a', "2px solid gold");
+        
+    }
+    if (cont === "b") {
+        document.documentElement.style.setProperty('--border-b', "2px solid gold");
+        console.log("sdfsd");
+    }
+    if (cont === "m") {
+        document.documentElement.style.setProperty('--border-m', "2px solid gold");
+    }
+    if (cont === "r") {
+        document.documentElement.style.setProperty('--border-r', "2px solid gold");
+    }
+    
+}
+
+aWeaponCont.onclick = function() { textAnimation(descText, 0, weaponsDescText); lightUp("a") };
+bWeaponCont.onclick = function() { textAnimation(descText, 1, weaponsDescText); lightUp("b") };
+mWeaponCont.onclick = function() { textAnimation(descText, 2, weaponsDescText); lightUp("m") };
+rWeaponCont.onclick = function() { textAnimation(descText, 3, weaponsDescText); lightUp("r") };
+
+textAnimation(descText, 0, weaponsDescText);
+
+// Disable arrow and space page movement
+window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
 
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

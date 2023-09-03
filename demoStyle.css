@@ -16,9 +16,9 @@
     background-position: center;
 }
 
-.demoPlayer {
+.demoPlayer1, .demoPlayer2 {
     position: absolute;
-    top: 1000px;
+    top: 3300px;
     left: 100px;
     width: var(--demo-player-width);
     height: var(--demo-player-height);
@@ -30,6 +30,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-
 }
 
+.demoPlayer2 {
+    top: 3300px;
+    left: 90vw;
+    background-image: url("Assets/Images/Archer.png");
+}
