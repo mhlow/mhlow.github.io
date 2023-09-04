@@ -374,6 +374,11 @@ function closePage(str) {
 /* ------------------------------------------------------------------------------------ */
 // Text animation
 
+const aWeaponCont = document.querySelector(".aWeaponCont");
+const bWeaponCont = document.querySelector(".bWeaponCont");
+const mWeaponCont = document.querySelector(".mWeaponCont");
+const rWeaponCont = document.querySelector(".rWeaponCont");
+
 const weaponsText = document.querySelector(".weaponsText");
 const weaponsDescText = document.querySelector(".weaponsDescText");
 
@@ -475,11 +480,6 @@ textAnimation(descText, 0, weaponsDescText);
 
 /* ------------------------------------------------------------------------------------ */
 // Border animation selection
-
-const aWeaponCont = document.querySelector(".aWeaponCont");
-const bWeaponCont = document.querySelector(".bWeaponCont");
-const mWeaponCont = document.querySelector(".mWeaponCont");
-const rWeaponCont = document.querySelector(".rWeaponCont");
 
 function lightUp(cont) {
     document.documentElement.style.setProperty('--border-a', "none");
