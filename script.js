@@ -401,7 +401,7 @@ let descText = [
 ];
 
 let desc = "";
-function textAnimation(num, weaponsDescText) {
+function textAnimation(num) {
     weaponsDescText.setAttribute('style', 'white-space: pre;');
     var longest = Math.max(...(descText[num].map(el => el.length)));
 
@@ -421,7 +421,7 @@ function textAnimation(num, weaponsDescText) {
             if (offset <= 0) {
                 if (!forwards) {
                     forwards = true;
-                    textAnimation(descText, num, weaponsDescText);
+                    textAnimation(num);
                 }
                 clearInterval(stopRep);
                 
@@ -476,7 +476,7 @@ mWeaponCont.onclick = function() { textAnimation(2); lightUp("m") };
 rWeaponCont.onclick = function() { textAnimation(3); lightUp("r") };
 
 
-textAnimation(descText, 0, weaponsDescText);
+textAnimation(0);
 
 /* ------------------------------------------------------------------------------------ */
 // Border animation selection
