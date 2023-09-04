@@ -39,6 +39,10 @@ let ARROWRIGHT = false;
 
 const body = document.body
 const html = document.documentElement;
+
+/* ------------------------------------------------------------------------------------ */
+// Demo character movement
+
 let height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
 
 document.addEventListener('keydown', function(e) {   
@@ -235,6 +239,8 @@ function characterBob() {
 setInterval(updateDemo, 20);
 setInterval(characterBob, 600);
 
+/* ------------------------------------------------------------------------------------ */
+// Demo buttons
 const wasd = document.querySelector(".wasd");
 const arrows = document.querySelector(".arrows");
 
@@ -256,7 +262,9 @@ function oscillateButtons() {
 setInterval(oscillateButtons, 700);
 
 
-const archerSkillImg = document.querySelector("#archerSkillImg");
+
+/* ------------------------------------------------------------------------------------ */
+// Characer hover page animation
 
 let pageWidth = "22vw";
 let pagePadding = "0 0.4vw 0 1.4vw";
@@ -362,14 +370,12 @@ function closePage(str) {
     }
 }
 
+
+/* ------------------------------------------------------------------------------------ */
+// Text animation
+
 const weaponsText = document.querySelector(".weaponsText");
 const weaponsDescText = document.querySelector(".weaponsDescText");
-
-const aWeaponCont = document.querySelector(".aWeaponCont");
-const bWeaponCont = document.querySelector(".bWeaponCont");
-const mWeaponCont = document.querySelector(".mWeaponCont");
-const rWeaponCont = document.querySelector(".rWeaponCont");
-
 
 let SPEED = 5;
 let forwards = true;
@@ -390,9 +396,9 @@ let descText = [
 ];
 
 let desc = "";
-function textAnimation(textArr, num, textOuter) {
-    textOuter.setAttribute('style', 'white-space: pre;');
-    var longest = Math.max(...(textArr[num].map(el => el.length)));
+function textAnimation(num, weaponsDescText) {
+    weaponsDescText.setAttribute('style', 'white-space: pre;');
+    var longest = Math.max(...(descText[num].map(el => el.length)));
 
     var stopRep = setInterval(function () {
         if (forwards) {
@@ -410,7 +416,7 @@ function textAnimation(textArr, num, textOuter) {
             if (offset <= 0) {
                 if (!forwards) {
                     forwards = true;
-                    textAnimation(textArr, num, textOuter);
+                    textAnimation(descText, num, weaponsDescText);
                 }
                 clearInterval(stopRep);
                 
@@ -420,11 +426,11 @@ function textAnimation(textArr, num, textOuter) {
         
         if (forwards) {
             desc = "";
-            for (let i = 0; i < textArr[num].length; i++) {
-                if (textArr[num][i].length > offset) {
-                    desc += textArr[num][i].slice(0, offset) + "\r\n";
+            for (let i = 0; i < descText[num].length; i++) {
+                if (descText[num][i].length > offset) {
+                    desc += descText[num][i].slice(0, offset) + "\r\n";
                 } else {
-                    desc += textArr[num][i] + "\r\n";
+                    desc += descText[num][i] + "\r\n";
                 }
             }
             // console.log(desc);
@@ -452,12 +458,28 @@ function textAnimation(textArr, num, textOuter) {
             weaponsText.textContent = weaponsText.textContent.slice(0, offset);
         }
         
-        textOuter.textContent = desc;
+        weaponsDescText.textContent = desc;
     }, SPEED);
 
     
     
 };
+
+aWeaponCont.onclick = function() { textAnimation(0); lightUp("a") };
+bWeaponCont.onclick = function() { textAnimation(1); lightUp("b") };
+mWeaponCont.onclick = function() { textAnimation(2); lightUp("m") };
+rWeaponCont.onclick = function() { textAnimation(3); lightUp("r") };
+
+
+textAnimation(descText, 0, weaponsDescText);
+
+/* ------------------------------------------------------------------------------------ */
+// Border animation selection
+
+const aWeaponCont = document.querySelector(".aWeaponCont");
+const bWeaponCont = document.querySelector(".bWeaponCont");
+const mWeaponCont = document.querySelector(".mWeaponCont");
+const rWeaponCont = document.querySelector(".rWeaponCont");
 
 function lightUp(cont) {
     document.documentElement.style.setProperty('--border-a', "none");
@@ -482,14 +504,11 @@ function lightUp(cont) {
     
 }
 
-aWeaponCont.onclick = function() { textAnimation(descText, 0, weaponsDescText); lightUp("a") };
-bWeaponCont.onclick = function() { textAnimation(descText, 1, weaponsDescText); lightUp("b") };
-mWeaponCont.onclick = function() { textAnimation(descText, 2, weaponsDescText); lightUp("m") };
-rWeaponCont.onclick = function() { textAnimation(descText, 3, weaponsDescText); lightUp("r") };
 
-textAnimation(descText, 0, weaponsDescText);
+/* ------------------------------------------------------------------------------------ */
 
 // Disable arrow and space page movement
+
 window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
 
 
