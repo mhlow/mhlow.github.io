@@ -24,6 +24,7 @@
 }
 
 .demoBackground > div {
+    position: relative;
     flex-grow: 1;
     border-right: 2px green solid;
     box-sizing: border-box;
@@ -41,7 +42,6 @@
 
 
 .demoBackground > div > div {
-    position: relative;
     height: calc(var(--wasd-scale) * 2vw);
     width: calc(var(--wasd-scale) * 3vw);
 
@@ -54,16 +54,16 @@
 }
 
 .wasd {
-    position: relative;
-    top: 2vw;
+    position: absolute;
+    bottom: 2vw;
     left: 2vw;
     background-image: url("Assets/Images/wasd.png");
 }
 
 .arrows {
     transform: scaleX(1);
-    position: relative;
-    top: 2vw;
+    position: absolute;
+    bottom: 2vw;
     left: 2vw;
     background-image: url("Assets/Images/arrows.png");
     /* border: 1px green solid; */
@@ -91,3 +91,10 @@
     z-index: 1;
     background-image: url("Assets/Images/Archer.png");
 }
+
+
+
+
+
+
+
