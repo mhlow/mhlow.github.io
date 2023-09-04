@@ -4,7 +4,8 @@ body {
     font-family: font;
     font-size: 1.2vw;
     color: rgb(22, 22, 0);
-    background-color: #120533;
+    background-color: rgba(30,39,46,255);
+    /* background-color: #120533; */
 }
 
 img {
@@ -56,6 +57,13 @@ a {
     text-align: center;
 }
 
+.credits {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: rgb(187, 148, 40);
+}
+
 .navbar {
     position: sticky;
     top: 0px;
@@ -95,12 +103,16 @@ a {
 
 
 .overviewContainer {
-    height: 450px;
+    height: 30vw;
     padding: 3vh 10vw;
+
+    color: rgb(193, 210, 224);
 
     /* border: 5px rgb(70, 14, 0) double; */
 
     background-color: #9198e5;
+    background: radial-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.8)), url("Assets/Images/Background.png");
+    background-size: cover;
 }
 
 .overviewText, .characterDescText, .weaponsText {
@@ -112,20 +124,28 @@ a {
     justify-content: center;
 }
 
-.overviewInner > span{
-    flex-grow: 1;
+.left{
+    flex-grow: 30;
     padding-right: 2vw;
+}
+
+.right {
+    flex-grow: 1;
 }
 
 .gameplayContainer {
     height: 400px;
-    padding: 3vh 10vw;
     color: rgb(253, 255, 138);
 
     /* border-top: 3px double #120533; */
     /* border: 5px rgb(70, 14, 0) double; */
-    background: linear-gradient(180deg, #120533 90%, #6d77e0 100%);
+    background: radial-gradient(ellipse at top, rgb(11,43,54), transparent),
+            radial-gradient(ellipse at bottom, rgb(23, 49, 97), transparent);
     background-color: #120533;
+}
+
+.gameplayInner {
+    padding: 0vh 10vw;
 }
 
 .gameplayText {
@@ -164,7 +184,7 @@ a {
 .characterContainer {
     position: relative;
     width: auto;
-    height: 30vh;
+    height: 36vh;
     padding-bottom: 10vh;
 
     /* background-image: url("Assets/Images/BrickWallBackground.png"); */

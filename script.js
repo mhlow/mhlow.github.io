@@ -12,7 +12,7 @@ const magePage = document.querySelector(".magePage");
 const roguePage = document.querySelector(".roguePage");
 
 const playerWidth = 1.8 * 29;
-const MOVEMENT_SPEED = 10;
+const MOVEMENT_SPEED = 5;
 let posX1 = playerImg1.offsetLeft;
 let posY1 = playerImg1.offsetTop;
 
@@ -37,7 +37,9 @@ let ARROWDOWN = false;
 let ARROWLEFT = false;
 let ARROWRIGHT = false;
 
-
+const body = document.body
+const html = document.documentElement;
+let height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
 
 document.addEventListener('keydown', function(e) {   
     let keyPress = e.code;
@@ -114,11 +116,12 @@ document.addEventListener('keyup', function(e) {
 })
 
 function updateDemo() {
+    height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
     posX1 = playerImg1.offsetLeft;
     posY1 = playerImg1.offsetTop;
     posX2 = playerImg2.offsetLeft;
     posY2 = playerImg2.offsetTop;
-
+    
     // Player 1
     if (UP) {
         posY1 -= MOVEMENT_SPEED;
@@ -129,17 +132,11 @@ function updateDemo() {
 
     if (LEFT) {
         posX1 -= MOVEMENT_SPEED;
-        if (!inHorizontalBounds(posX1, 0)) {
-            posX1 = 0;
-        }
 
         playerImg1.style.transform = "scaleX(1)";
     }
     if (RIGHT) {
         posX1 += MOVEMENT_SPEED;
-        if (!inHorizontalBounds(posX1, 0)) {
-            posX1 = (window.innerWidth - 2 * playerWidth - 18) / 2;
-        }
         playerImg1.style.transform = "scaleX(-1)";
     }
 
@@ -153,32 +150,72 @@ function updateDemo() {
 
     if (ARROWLEFT) {
         posX2 -= MOVEMENT_SPEED;
-        if (!inHorizontalBounds(posX2, (window.innerWidth - 18) / 2)) {
-            posX2 = (window.innerWidth - 18) / 2;
-        }
 
         playerImg2.style.transform = "scaleX(1)";
     }
     if (ARROWRIGHT) {
         posX2 += MOVEMENT_SPEED;
-        if (!inHorizontalBounds(posX2, (window.innerWidth - 18) / 2)) {
-            posX2 = window.innerWidth - playerWidth - 18;
-        }
+        
         playerImg2.style.transform = "scaleX(-1)";
     }
 
+    p1Bounds();
+    p2Bounds();
 
     playerImg1.style.top = posY1 + "px";
     playerImg1.style.left = posX1 + "px";
     playerImg2.style.top = posY2 + "px";
     playerImg2.style.left = posX2 + "px";
+    // console.log(`Player 1: (${posX1}, ${posY1})`);
+    // console.log(`Player 2: (${posX2}, ${posY2})`);
 }
 
 function inHorizontalBounds(playerX, offset) {
+    
     if (0 + offset <= playerX && playerX <= (window.innerWidth - 2 * playerWidth - 18) / 2 + offset) {
         return true;
     }
     return false;
+}
+
+function p1Bounds() {
+    p1Left = window.innerWidth / (1348/72);
+    p1Right = window.innerWidth / (1348/562);
+    p1Top = height - Math.floor(window.innerWidth * 0.475);
+    p1Bot = height - Math.floor(window.innerWidth * 0.184);
+
+    // console.log(window.innerWidth);
+    if (posX1 < p1Left) {
+        posX1 = p1Left;
+    } else if (p1Right < posX1) {
+        posX1 = p1Right;
+    }
+
+    if (posY1 < p1Top) {
+        posY1 = p1Top;
+    } else if (p1Bot < posY1) {
+        posY1 = p1Bot;
+    }
+}
+
+function p2Bounds() {
+    p2Left = window.innerWidth / (1348/730);
+    p2Right = window.innerWidth / (1348/1218);
+    p2Top = height - Math.floor(window.innerWidth * 0.475);
+    p2Bot = height - Math.floor(window.innerWidth * 0.184);
+
+    // console.log(window.innerWidth);
+    if (posX2 < p2Left) {
+        posX2 = p2Left;
+    } else if (p2Right < posX2) {
+        posX2 = p2Right;
+    }
+
+    if (posY2 < p2Top) {
+        posY2 = p2Top;
+    } else if (p2Bot < posY2) {
+        posY2 = p2Bot;
+    }
 }
 
 bobUp = true;
@@ -197,6 +234,27 @@ function characterBob() {
 
 setInterval(updateDemo, 20);
 setInterval(characterBob, 600);
+
+const wasd = document.querySelector(".wasd");
+const arrows = document.querySelector(".arrows");
+
+let pressed = false;
+
+function oscillateButtons() {
+    if (pressed) {
+        pressed = false;
+        wasd.style.backgroundImage = "url('Assets/Images/wasd.png')"
+        arrows.style.backgroundImage = "url('Assets/Images/arrows.png')"
+    } else {
+        pressed = true;
+        wasd.style.backgroundImage = "url('Assets/Images/wasdPressed.png')"
+        arrows.style.backgroundImage = "url('Assets/Images/arrowsPressed.png')"
+    }
+    
+}
+
+setInterval(oscillateButtons, 700);
+
 
 const archerSkillImg = document.querySelector("#archerSkillImg");
 
@@ -317,16 +375,16 @@ let SPEED = 5;
 let forwards = true;
 let offset = 0;
 
-weaponTitleText = [
+let weaponTitleText = [
     "Elden Wood Bow",
     "Soulreaper Club",
     "Elemental Codex",
     "Whispering Daggers"
 ]
 
-descText = [
+let descText = [
     ["The Ranger has an enchanted bow, allowing her to deal", "damage to enemies from afar with lethal precision."], 
-    ["The NecroKnight wields a skeleton club, able to deal", "massive amounts of damage to those who get too close,", "and it even has some magical properties allowing it to summon", "the undead into your enemies' dungeons."], 
+    ["The Necrobrawler wields a skeleton club, able to deal", "massive amounts of damage to those who get too close,", "and it even has some magical properties allowing it to summon", "the undead into your enemies' dungeons."], 
     ["The Mage casts powerful spells from her spellbook, which she", "uses to blast enemies at a safe distance, and to protect", "herself if those enemies manage to get too close for comfort."], 
     ["The Rogue fights with two sharp daggers, which he slices through", "enemies with as he nimbly dashes around, making him impossible", "to track as he cuts through his foes."]
 ];
