@@ -1,4 +1,4 @@
-# Gubber41.github.io
+# mhlow.github.io
 This website was made for the CCDP10003 (Video Games: Remaking Reality) Assignment 1, due 4/09/2023.
 Developed by Jack Moodie (), Luke Nguyen (1480257) and Ming Han Low (1338244)
 
